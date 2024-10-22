@@ -10,7 +10,9 @@ from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
 from sklearn.metrics import davies_bouldin_score
 
-with open(r"C:/Users/artur/Documents/Replicacion_de_articulos/Ambiente virtual Tensorflow/AutoCod DAE/DAE_km/simulation.csv", 'r') as f:
+from tensorflow.examples.tutorials.mnist import input_data
+
+with open(r"C:\Users\artur\Documents\Replicacion_de_articulos\Ambiente virtual Tensorflow\AutoCod_DAE\DAE_km\simulation.csv", 'r') as f:
     data = pd.read_csv(f)
 
 print(data.shape)
@@ -118,10 +120,9 @@ with tf.Session() as sess:
     print(davies_bouldinScore)
 
     
-    # encode_decode = sess.run(
-    #     y_pred, feed_dict={X: mnist.test.images[:examples_to_show]})
-    # f, a = plt.subplots(2, 10, figsize=(10, 2))  #return fig，axes
-    # for i in range(examples_to_show):  
-    #     a[0][i].imshow(np.reshape(mnist.test.images[i], (28, 28)))  
-    #     a[1][i].imshow(np.reshape(encode_decode[i], (28, 28)))  
-    # plt.show() 
+encode_decode = sess.run(y_pred, feed_dict={X: mnist.test.images[:examples_to_show]})
+f, a = plt.subplots(2, 10, figsize=(10, 2))  #return fig，axes
+for i in range(examples_to_show):  
+         a[0][i].imshow(np.reshape(mnist.test.images[i], (28, 28)))  
+         a[1][i].imshow(np.reshape(encode_decode[i], (28, 28)))  
+plt.show() 
